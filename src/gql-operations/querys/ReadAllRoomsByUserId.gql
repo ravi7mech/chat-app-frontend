@@ -1,0 +1,44 @@
+query ReadAllRoomsByUserId($where: RoomParticipantWhereInput) {
+  roomParticipants(where: $where) {
+    id
+    room {
+      id
+      name
+      type
+      updatedDate
+      _count {
+        roomParticipants
+      }
+      roomParticipants {
+        user {
+          id
+          firstName
+          lastName
+          imageUrl
+          preferences
+          onlineStatus
+          updatedDate
+          externalUserId
+        }
+      }
+    }
+    messageRecipients {
+      id
+      isRead
+      message {
+        id
+        body
+        user {
+          id
+          firstName
+          lastName
+          imageUrl
+          preferences
+          onlineStatus
+          updatedDate
+          externalUserId
+        }
+      }
+    }
+  }
+}

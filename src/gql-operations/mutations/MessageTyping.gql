@@ -1,0 +1,10 @@
+mutation MessageTyping($data: MessageTypingInput) {
+  messageTyping(data: $data) {
+    roomId
+    id
+    body
+    userName
+    event
+    userId
+  }
+}

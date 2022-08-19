@@ -1,0 +1,55 @@
+query FindMessagesByRoomId(
+  $cursor: MessageWhereUniqueInput
+  $distinct: [MessageScalarFieldEnum!]
+  $orderBy: [MessageOrderByWithRelationInput!]
+  $skip: Int
+  $take: Int
+  $where: MessageWhereInput
+) {
+  messages(
+    cursor: $cursor
+    distinct: $distinct
+    orderBy: $orderBy
+    skip: $skip
+    take: $take
+    where: $where
+  ) {
+    id
+    body
+    createdDate
+    updatedDate
+    room {
+      id
+      name
+      type
+      updatedDate
+    }
+    messageRecipients {
+      id
+      isRead
+      roomParticipant {
+        id
+        user {
+          id
+          firstName
+          lastName
+          imageUrl
+          preferences
+          onlineStatus
+          updatedDate
+          externalUserId
+        }
+      }
+    }
+    user {
+      id
+      firstName
+      lastName
+      imageUrl
+      preferences
+      onlineStatus
+      updatedDate
+      externalUserId
+    }
+  }
+}

@@ -1,0 +1,10 @@
+subscription OnMessageTyping($roomId: Int!) {
+  onMessageTyping(roomId: $roomId) {
+    body
+    id
+    roomId
+    userName
+    event
+    userId
+  }
+}
